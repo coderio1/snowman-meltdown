@@ -6,16 +6,18 @@ WORDS = ["waffles", "pancake", "snowball", "snowman", "skiing", "backpack", "sun
 
 
 def get_random_word():
-    """Selects a random word from the list."""
+    """Selects a random word from the WORDS list"""
+
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
-    """Displays the current snowman stage and the secret word with underscores for unguessed letters."""
-    # Show current snowman stage
+    """Displays the current snowman stage and underscores for secret word"""
+
+    # show current snowman stage
     print(STAGES[mistakes])
 
-    # Build the word display: show letter if guessed, else underscore
+    # build the word display: show letter if guessed, else underscore
     word_display = " ".join(
         letter if letter in guessed_letters else "_"
         for letter in secret_word
@@ -41,7 +43,7 @@ def play_game():
 
         guess = input("Guess a letter: ").lower()
 
-        # Validate input
+        # validation for a single letter input
         if len(guess) != 1 or not guess.isalpha():
             print("Please enter a single letter!\n")
             continue
@@ -58,11 +60,24 @@ def play_game():
             print(f"'{guess}' is not in the word!\n")
             mistakes += 1
 
-        # Check win condition
+        # win condition check
         if all(letter in guessed_letters for letter in secret_word):
             print(f"You won! The word was: {secret_word}")
             break
     else:
-        # Game over — show final melted stage
+        # Game over
         display_game_state(mistakes, secret_word, guessed_letters)
-        print(f"Game over! The word was: {secret_word}")
+        print(f"Game Over!\nThe secret word was: {secret_word}")
+
+
+def ask_replay():
+    """prompts user to repeat the game"""
+
+    while True:
+        answer = input("Do you want to play again? (yes/no): ").lower().strip()
+        if answer in ("yes", "y"):
+            return True
+        elif answer in ("no", "n"):
+            return False
+        else:
+            print("Please enter yes or no.")
