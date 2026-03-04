@@ -1,5 +1,5 @@
 import random
-from snowman_stages import STAGES
+from ascii_art import STAGES
 
 # List of secret words
 WORDS = ["waffles", "pancake", "snowball", "snowman", "skiing", "backpack", "sunglasses", "headphones", "orange", "melon"]
