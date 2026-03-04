@@ -2,7 +2,7 @@ import random
 from snowman_stages import STAGES
 
 # List of secret words
-WORDS = ["python", "git", "github", "snowman", "meltdown"]
+WORDS = ["waffles", "pancake", "snowball", "snowman", "skiing", "backpack", "sunglasses", "headphones", "orange", "melon"]
 
 
 def get_random_word():
